@@ -85,7 +85,22 @@ int main(/*int argc, char const *argv[]*/)
 	bool stop;
 	de_t* de = NULL;
 	int stats[12] = {0};
+	int val;
+	FILE* f = fopen("jets.txt", "w");
+	if (f==NULL)
+	{
+		printf("E: ouverture du fichier jets.txt");
+		return 1;
+	}
 
+	// ajout de le contenu de f dans la liste des jets
+	while ()
+	{
+		fread(&val, sizeof(int), 1, f); 
+		ajouterJet(&de, stats[12]);
+	}
+
+	
 	// titre
 	titre();
 

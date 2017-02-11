@@ -18,6 +18,8 @@ void listerCoups(de_t* de);
 void supprimerCoup(de_t** de, int stats[12]);
 
 
+void supprimerListe(de_t** de, int stats[12]);
+
 
 
 
