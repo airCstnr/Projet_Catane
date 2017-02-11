@@ -16,6 +16,19 @@ Le menu propose 5 possibilités:
 + afficher un histogramme des fréquences de sortie des valeurs
 + quitter (0)
 
+### Structures des données
+
+Les informations conservées sont:
++ les jets de dés dans une liste chaînée (ajout et suppression en temps constant)
++ les fréquences de sortie dans un tableau (taille fixe, modification en temps constant)
+
+
+### Améliorations possibles
+
+Les différentes possibilités à ajouter sont:
++ obtenir des statistiques plus avancées (moyenne, espérance, variance, ecart type...)
++ pouvoir utiliser 1, 2, 3, 4 ou plus de dés
+
 
 ## Auteur
 
