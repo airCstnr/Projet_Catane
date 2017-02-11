@@ -42,7 +42,7 @@ void titre()
 bool menu(de_t** de, int stats[12])
 {
 	
-	printf("\nMenu :");
+	printf("\nMenu ");
 
 	// saisir
 	int m = saisirEntier();
@@ -51,26 +51,26 @@ bool menu(de_t** de, int stats[12])
 	switch (m)
 	{
 		case 0:
-			printf("\nQuitter...\n");
+			printf("Quitter...\n");
 			return STOP;
 		case 1:
 			// ajouter un jet de dés
-			printf("\nAjout d'un jet de dés...\n");
+			printf("Ajout d'un jet de dés...\n");
 			ajouterJet(de, stats);
 			break;
 		case 2:
 			// lister les coups
-			printf("\nListe des coups...\n");
+			printf("Liste des coups...\n");
 			listerCoups(*de);
 			break;
 		case 3:
 			// supprimer le dernier coup
-			printf("\nSupprimer le dernier coup ajouté...\n");
+			printf("Supprimer le dernier coup ajouté...\n");
 			supprimerCoup(de, stats);
 			break;
 		case 4:
 			// voir les stats
-			printf("\nAffichage des stats...\n");
+			printf("Affichage des stats...\n");
 			afficherHisto(stats);
 			break;
 		default:
