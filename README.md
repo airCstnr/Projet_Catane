@@ -28,6 +28,8 @@ Les informations conservées sont:
 Les différentes possibilités à ajouter sont:
 + obtenir des statistiques plus avancées (moyenne, espérance, variance, ecart type...)
 + pouvoir utiliser 1, 2, 3, 4 ou plus de dés
++ enregistrer les résultats dans un fichier
++ lire les résultats déja enregistrés dans un fichier
 
 
 ## Auteur
