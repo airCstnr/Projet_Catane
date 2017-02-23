@@ -85,15 +85,16 @@ bool menu(de_t** de, int stats[12])
 int main(/*int argc, char const *argv[]*/)
 {
 	bool stop;
-	de_t* de = NULL;
+	de_t* de = NULL, *last = NULL;
 	int stats[12] = {0};
 	int val, err;
 
-	FILE* f = fopen("jets.txt", "r+");
-	if (f==NULL)
+	// ouverture du fichier de sérialisation
+	FILE* f = fopen("jets.txt", "r");
+	if (!f)
 	{
-		printf("E: ouverture du fichier jets.txt");
-		return -1;
+		printf("E: ouverture du fichier jets.txt\n");
+		return EXIT_FAILURE;
 	}
 
 	// ajout de le contenu de f dans la liste des jets
@@ -103,12 +104,22 @@ int main(/*int argc, char const *argv[]*/)
 		if (!err)
 			break;
 		de_t* nouveau = (de_t*) malloc(sizeof(de_t));
-		nouveau->next = de;
+		nouveau->next = NULL;
 		nouveau->val = val;
-		de = nouveau;
+		if (last)
+		{
+			last->next = nouveau;
+		}
+		else
+		{
+			de = nouveau;
+		}
+		last = nouveau;
 		stats[val-1]++;
 	}
 	
+	fclose(f);
+
 	// titre
 	titre();
 
@@ -117,16 +128,27 @@ int main(/*int argc, char const *argv[]*/)
 		stop = menu(&de, stats);
 
 
+	// ouverture du fichier de sérialisation
+	f = fopen("jets.txt", "w");
+	if (!f)
+	{
+		printf("E: ouverture du fichier jets.txt\n");
+		return EXIT_FAILURE;
+	}
+
 	// ajout de la liste des jets dans f
 	while (true)
 	{
 		val = supprimerCoup(&de, stats);
-		if (val == 0)
+		if (!val)
 			break;
 		fwrite(&val, sizeof(int), 1, f);
 	}
 
+	// libération de la liste
 	supprimerListe(&de, stats);
 
-	return 0;
+	fclose(f);
+
+	return EXIT_SUCCESS;
 }
