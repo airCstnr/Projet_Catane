@@ -3,8 +3,11 @@
 
 CFLAGS = -Wall -Werror -Wextra -std=c11 -g
 
-prog: main.c de.o stats.o
-	gcc $(CFLAGS) main.c de.o stats.o -o prog
+prog: main.c de.o stats.o interface.o
+	gcc $(CFLAGS) main.c de.o stats.o interface.o -o prog
+
+interface.o: interface.c
+	gcc $(CFLAGS) interface.c -c
 
 de.o: de.c
 	gcc $(CFLAGS) de.c -c
