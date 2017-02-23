@@ -94,10 +94,10 @@ int main(/*int argc, char const *argv[]*/)
 	}
 
 	// ajout de le contenu de f dans la liste des jets
-	while ()
+	while (true)
 	{
 		fread(&val, sizeof(int), 1, f); 
-		ajouterJet(&de, stats[12]);
+		ajouterJet(&de, stats);
 	}
 
 	

@@ -69,7 +69,7 @@ void supprimerListe(de_t** de, int stats[12])
 {
 	while (*de != NULL)
 	{
-		supprimerCoup(de, stats[12]);
+		supprimerCoup(de, stats);
 	}
 	return;
 
