@@ -13,4 +13,4 @@ stats.o: stats.c
 	gcc $(CFLAGS) stats.c -c
 
 clean:
-	rm -f prog
+	rm -f prog *.o

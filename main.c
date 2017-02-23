@@ -10,6 +10,8 @@
 
 #define STOP 1
 
+#define DEBLINE printf("\n--- DEB LINE --- %s --- %i ---\n", __FILE__, __LINE__)
+
 // ----------------------------------
 int saisirEntier()
 {
@@ -27,9 +29,9 @@ int saisirEntier()
 // ----------------------------------
 void titre()
 {
-	printf("\n----------------------------------\n");
-	printf("\n### Projet Catane ###\n");
-	printf("\n----------------------------------\n");
+	printf("\n ================================");
+	printf("\n|         Projet Catane          |");
+	printf("\n ================================\n");
 	printf("Menu :\n");
 	printf("1\tAjouter un jet de dés\n");
 	printf("2\tLister les coups\n");
@@ -85,21 +87,27 @@ int main(/*int argc, char const *argv[]*/)
 	bool stop;
 	de_t* de = NULL;
 	int stats[12] = {0};
-	int val;
-	FILE* f = fopen("jets.txt", "w");
+	int val, err;
+
+	FILE* f = fopen("jets.txt", "r+");
 	if (f==NULL)
 	{
 		printf("E: ouverture du fichier jets.txt");
-		return 1;
+		return -1;
 	}
 
 	// ajout de le contenu de f dans la liste des jets
 	while (true)
 	{
-		fread(&val, sizeof(int), 1, f); 
-		ajouterJet(&de, stats);
+		err = fread(&val, sizeof(int), 1, f);
+		if (!err)
+			break;
+		de_t* nouveau = (de_t*) malloc(sizeof(de_t));
+		nouveau->next = de;
+		nouveau->val = val;
+		de = nouveau;
+		stats[val-1]++;
 	}
-
 	
 	// titre
 	titre();
@@ -107,6 +115,18 @@ int main(/*int argc, char const *argv[]*/)
 	// menu
 	while (stop != STOP)
 		stop = menu(&de, stats);
+
+
+	// ajout de la liste des jets dans f
+	while (true)
+	{
+		val = supprimerCoup(&de, stats);
+		if (val == 0)
+			break;
+		fwrite(&val, sizeof(int), 1, f);
+	}
+
+	supprimerListe(&de, stats);
 
 	return 0;
 }

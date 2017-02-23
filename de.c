@@ -51,16 +51,18 @@ void listerCoups(de_t* de)
 }
 
 // ----------------------------------
-void supprimerCoup(de_t** de, int stats[12])
+int supprimerCoup(de_t** de, int stats[12])
 {
+	int val = 0;
 	de_t* tmp = *de;
 	if (*de!=NULL)
 	{
+		val = (*de)->val;
 		stats[(*de)->val -1]--;
 		*de = (*de)->next;
 	}
 	free(tmp);
-	return;
+	return val;
 }
 
 
