@@ -1,6 +1,8 @@
-# Projet Catane
+Projet Catane
+=============
 
 Ce projet personnel est un programme pour saisir les résultats d'un ensemble de jets de deux dés lors d'une partie du jeu Les Colons de Catane (https://fr.wikipedia.org/wiki/Les_Colons_de_Catane)
+
 
 ## Fonctionnement
 
@@ -23,13 +25,16 @@ Les informations conservées sont:
 + les fréquences de sortie dans un tableau (taille fixe, modification en temps constant)
 
 
-### Améliorations possibles
+## Améliorations possibles
 
 Les différentes possibilités à ajouter sont:
 + obtenir des statistiques plus avancées (moyenne, espérance, variance, ecart type...)
 + pouvoir utiliser 1, 2, 3, 4 ou plus de dés
++ enregistrer les résultats dans des fichiers
++ saisir les résultats de chaque dé indépendamment
 
 
 ## Auteur
 
 Raphaël Castanier, IUT d'informatique de Grenoble
+
