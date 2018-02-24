@@ -33,7 +33,6 @@ Les différentes possibilités à ajouter sont:
 + enregistrer les résultats dans des fichiers
 + saisir les résultats de chaque dé indépendamment
 
-
 ## Auteur
 
 Raphaël Castanier, IUT d'informatique de Grenoble
